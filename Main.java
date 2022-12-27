@@ -38,10 +38,15 @@ public class Main {
 
                         var selectedReservation = diningHallReservationList.get(inputDiningDateIndex - 1);
                         do {
-                            if (!selectedReservation.hasAnyAvailableSeat()) { // yeterli yerin olup olmadığını kontrol eder
-                                System.out.println("Seçtiğiniz saat için yeterli yer yok.");
-                                returnAvailableSeat = true; // koltuk döngüsünü başa alır
-                            }
+                            selectedReservation = diningHallReservationList.get(inputDiningDateIndex - 1);
+                                if (!selectedReservation.hasAnyAvailableSeat()) { // yeterli yerin olup olmadığını kontrol eder
+                                    System.out.println("Seçtiğiniz saat için yeterli yer yok. Lütfen başka bir saat seçiniz.");
+                                    inputDiningDateIndex = sc.nextInt();
+                                    returnAvailableSeat = true;
+
+
+                                }
+                                else{ returnAvailableSeat = false;}
                         } while (returnAvailableSeat);
 
                         var student = registeredStudents
